@@ -83,7 +83,8 @@ func main() {
 // config for shell function.
 var functionConfig = `{
   "description": "Apex generated REPL function",
-  "runtime": "golang"
+  "runtime": "golang",
+  "timeout": %d
 }`
 
 // event.
@@ -96,6 +97,7 @@ var (
 	chdir       = flag.String("chdir", "", "Working directory")
 	logLevel    = flag.String("log-level", "info", "Log level")
 	showVersion = flag.Bool("version", false, "Output version")
+	timeout     = flag.Int("timeout", 60, "Timeout in seconds")
 )
 
 func main() {
@@ -186,7 +188,8 @@ func deploy(project *project.Project) (*function.Function, error) {
 		return nil, err
 	}
 
-	if err := ioutil.WriteFile(filepath.Join(path, "function.json"), []byte(functionConfig), 0755); err != nil {
+	config := fmt.Sprintf(functionConfig, *timeout)
+	if err := ioutil.WriteFile(filepath.Join(path, "function.json"), []byte(config), 0755); err != nil {
 		return nil, err
 	}
 
