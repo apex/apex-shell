@@ -3,12 +3,6 @@
 
  The `apex-shell(1)` command allows you to execute commands in an AWS Lambda function via an interactive shell.
 
-## About
-
- Why on earth would you want to do this? Running arbitrary commands in AWS Lambda allows you to do things such as
- verify that AWS roles have adequate permissions to interact with other resources, inspecting what environment variables
- are presented by AWS, or simply taking a peek at the file structure of a Lambda container.
-
 ## Installation
 
 Grab a [binary release](https://github.com/apex/apex-shell/releases), or install via go-get:
@@ -16,6 +10,12 @@ Grab a [binary release](https://github.com/apex/apex-shell/releases), or install
 ```
 $ go get github.com/apex/apex-shell
 ```
+
+## About
+
+ Why on earth would you want to do this? Running arbitrary commands in AWS Lambda allows you to do things such as
+ verify that AWS roles have adequate permissions to interact with other resources, inspecting what environment variables
+ are presented by AWS, or simply taking a peek at the file structure of a Lambda container.
 
 ## Usage
 
