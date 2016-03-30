@@ -27,7 +27,6 @@ import (
 	"github.com/apex/apex/colors"
 	"github.com/apex/apex/function"
 	"github.com/apex/apex/project"
-	"github.com/apex/apex/utils"
 )
 
 func init() {
@@ -126,11 +125,6 @@ func main() {
 // shell sets up AWS credentials, deploys the function and starts the REPL.
 func shell() error {
 	config := aws.NewConfig()
-	profile := utils.GetProfile()
-
-	if region, err := utils.GetRegion(profile); err == nil {
-		config = config.WithRegion(region)
-	}
 
 	project := &project.Project{
 		Service: lambda.New(session.New(config)),
